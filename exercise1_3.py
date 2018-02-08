@@ -1,26 +1,19 @@
-#exercise1_3.py
-# exercise 1 part 5:
-#Show the following sequence: blue, red, blue, red, blue, red
-# (with each square appearing for 1 s with a 50 ms blank screen in the middle).
+# excercise 1 part 3
+#Show a red square for 1 s, then switch it to blue and show it for 1 s
+
+# exercise 1 part 4
 import time
 import sys
 from psychopy import visual,event,core
 
 win = visual.Window([400,400],color="black", units='pix')
-square_red = visual.Rect(win,lineColor="black",fillColor="red",size=[100,100],pos=[0,0])
-square_blue = visual.Rect(win,lineColor="black",fillColor="blue",size=[100,100],pos=[0,0])
-n=3
-interval1 = 1.0
-interval2 = .5
-for num in range(n):
-    square_red.draw()
-    win.flip()
-    core.wait(interval1)
-    win.flip()
-    core.wait(interval2)
-    square_blue.draw()
-    win.flip()
-    core.wait(interval1)
-    win.flip()
-    core.wait(interval2)
+square = visual.Rect(win,lineColor="black",fillColor="red",size=[100,100],pos=[0,0])
+square.draw()
+win.flip()
+core.wait(1)
+square.setFillColor('blue')
+square.draw()
+win.flip()
+core.wait(1)
+win.close()
 sys.exit()

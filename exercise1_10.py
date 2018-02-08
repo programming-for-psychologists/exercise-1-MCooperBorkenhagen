@@ -1,24 +1,27 @@
-#Excercise 1 part 12
-#Show two rotating squares simultaneously, one left of center rotating clockwise,
-#the other right of center, rotating counterclockwise
+#exercise 1 part 10
+#Display a blue square and increase its width (making it a rectangle) by 10 pixels whenever the user presses the left-arrow key.
+# Decrease the width by 10 pixels when the user presses the right-arrow key
+
 import time
 import sys
 from psychopy import visual,event,core
 
+
 win = visual.Window([400,400],color="black", units='pix')
-square_left = visual.Rect(win,lineColor="black",fillColor="purple",size=[100,100],pos=[-100,0])
-square_right = visual.Rect(win,lineColor="black",fillColor="purple",size=[100,100],pos=[100,0])
-square_left.draw()
-square_right.draw()
+square = visual.Rect(win,lineColor="red",fillColor="red",units='pix', pos=[0,0])
+square.size = [200,200]
+square.draw()
 win.flip()
+increment = [10,0]
+decrement = [-10,0]
 while True:
-    square_left.ori += 5
-    square_left.draw()
-    square_right.ori += -5
-    square_right.draw()
-    win.flip()
-    core.wait(.05)
+    if event.getKeys(['left']):
+        square.size += increment
+        square.draw()
+        win.flip()
+    if event.getKeys(['right']):
+        square.size += decrement
+        square.draw()
+        win.flip()
     if event.getKeys(['space']):
         break
-win.close()
-sys.exit()

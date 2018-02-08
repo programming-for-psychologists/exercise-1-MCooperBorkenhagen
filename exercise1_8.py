@@ -1,6 +1,7 @@
-#exercise 1 part 10
-#Display a blue square and increase its width (making it a rectangle) by 10 pixels whenever the user presses the left-arrow key.
-# Decrease the width by 10 pixels when the user presses the right-arrow key
+#exercise 1 part 8
+#Now make a square rotate continuously, one full revolution
+#(360 degrees) per second
+# and make the rotating square stop rotating when you press the 's' key
 
 import time
 import sys
@@ -8,20 +9,10 @@ from psychopy import visual,event,core
 
 
 win = visual.Window([400,400],color="black", units='pix')
-square = visual.Rect(win,lineColor="red",fillColor="red",units='pix', pos=[0,0])
-square.size = [200,200]
-square.draw()
-win.flip()
-increment = [10,0]
-decrement = [-10,0]
+square = visual.Rect(win,lineColor="red",fillColor="red",size=[100,100],pos=[0,0])
 while True:
-    if event.getKeys(['left']):
-        square.size += increment
-        square.draw()
-        win.flip()
-    if event.getKeys(['right']):
-        square.size += decrement
-        square.draw()
-        win.flip()
-    if event.getKeys(['space']):
-        break
+   square.draw()
+   square.ori += 5
+   win.flip()
+   if event.getKeys(['s']):
+       break
